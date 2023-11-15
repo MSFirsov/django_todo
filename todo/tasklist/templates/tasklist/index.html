@@ -13,35 +13,7 @@
                             </li>
                             {% for task in task_list %}
                                 {% if task.task_date == val %}
-                                    <!-- Button trigger modal -->
-                                    <li type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <div class="col text-truncate">
-                                            {% if task.is_completed == 1 %}
-                                                <s>{{task.text}}</s>
-                                            {% else %}
-                                                {{task.text}}
-                                            {% endif %}
-                                        </div>
-                                    </li>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    {{task.text}}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><a href="/delete_task/{{week_num}}/{{task.id}}">Удалить</a></button>
-                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"><a href="/is_completed_task/{{week_num}}/{{task.id}}">Готово!</a></button>
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% include 'modal_form.html' %}
                                 {% endif %}
                             {% endfor %}
                             <li class="list-group-item">
@@ -51,43 +23,15 @@
                         {% if val|date:'D' == 'Сб' %}
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                {{ day_list|last|date:'D, d b Y' }}
+                                    {{ day_list|last|date:'D, d b Y' }}
                                 </li>
-                            {% for task in task_list %}
-                                {% if task.task_date == day_list|last %}
-                                <!-- Button trigger modal -->
-                                    <li type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <div class="col text-truncate">
-                                            {% if task.is_completed == 1 %}
-                                                <s>{{task.text}}</s>
-                                            {% else %}
-                                                {{task.text}}
-                                            {% endif %}
-                                        </div>
-                                    </li>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    {{task.text}}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><a href="/delete_task/{{week_num}}/{{task.id}}">Удалить</a></button>
-                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"><a href="/is_completed_task/{{week_num}}/{{task.id}}">Готово!</a></button>
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
+                                {% for task in task_list %}
+                                    {% if task.task_date == day_list|last %}
+                                        {% include 'modal_form.html' %}
+                                    {% endif %}
+                                {% endfor %}
                                 <li class="list-group-item">
-                                    <a href="/create_task/{{week_num}}/{{ val|date:'Y-m-d' }}" class="text" >Добавить задание</a>
+                                    <a href="/create_task/{{week_num}}/{{ day_list|last|date:'Y-m-d' }}" class="text" >Добавить задание</a>
                                 </li>
                             </ul>
                         {% endif %}
