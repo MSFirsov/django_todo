@@ -17,7 +17,7 @@
                                 {% endif %}
                             {% endfor %}
                             <li class="list-group-item">
-                                <a href="/create_task/{{week_num}}/{{ val|date:'Y-m-d' }}" class="text" >Добавить задание</a>
+                                <a href="/create_task/{{ cur_year }}/{{week_num}}/{{ val|date:'Y-m-d' }}" class="text" >Добавить задание</a>
                             </li>
                         </ul>
                         {% if val|date:'D' == 'Сб' %}
@@ -31,7 +31,7 @@
                                     {% endif %}
                                 {% endfor %}
                                 <li class="list-group-item">
-                                    <a href="/create_task/{{week_num}}/{{ day_list|last|date:'Y-m-d' }}" class="text" >Добавить задание</a>
+                                    <a href="/create_task/{{ cur_year }}/{{week_num}}/{{ day_list|last|date:'Y-m-d' }}" class="text" >Добавить задание</a>
                                 </li>
                             </ul>
                         {% endif %}

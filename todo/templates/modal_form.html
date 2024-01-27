@@ -20,8 +20,8 @@
                                                     {{task.text}}
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><a href="/delete_task/{{week_num}}/{{task.id}}">Удалить</a></button>
-                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"><a href="/is_completed_task/{{week_num}}/{{task.id}}">Готово!</a></button>
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><a href="/delete_task/{{ cur_year }}/{{week_num}}/{{task.id}}">Удалить</a></button>
+                                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"><a href="/is_completed_task/{{ cur_year }}/{{week_num}}/{{task.id}}">Готово!</a></button>
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                                                 </div>
                                             </div>
